@@ -16,7 +16,8 @@ public class ExcelProvider implements ArgumentsProvider {
 
     private List<String> readFromFile(){
         List<String> lines = new LinkedList<>();
-        String path = "";
+        String relativePath = ("/src/main/resources/testFile.xlsx").replace("/".charAt(0), File.separatorChar);
+        String path = new File("").getAbsolutePath() + relativePath;
 
         try (XSSFWorkbook myExcelBook = new XSSFWorkbook(new FileInputStream(new File(path)))){
             ExcelExtractor excelExtractor = new XSSFExcelExtractor(myExcelBook);
